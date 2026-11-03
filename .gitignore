@@ -4,3 +4,5 @@ node_modules
 Thumbs.db
 desktop.ini
 *.zip
+.claude/settings.local.json
+__pycache__

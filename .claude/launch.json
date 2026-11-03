@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "prf-preview",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8850"],
+      "port": 8850
+    }
+  ]
+}
