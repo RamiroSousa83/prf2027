@@ -21,8 +21,9 @@
 <meta name="twitter:image" content="https://prf.aprovadobizurado.com.br/assets/img/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=Caveat+Brush&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="/assets/css/style.css" />
+<link rel="preload" as="image" href="/assets/img/capa-640.webp" imagesrcset="/assets/img/capa-400.webp 400w, /assets/img/capa-640.webp 640w" imagesizes="(min-width: 560px) 290px, 56vw" fetchpriority="high" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;600;700&family=Caveat+Brush&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/assets/css/style.css?v=2" />
 </head>
 <body>
 
@@ -58,9 +59,9 @@
     </div>
 
     <div class="hero__art" aria-hidden="true">
-      <img class="hero__page hero__page--left" src="/assets/img/mapa-04.webp" alt="" />
-      <img class="hero__page hero__page--right" src="/assets/img/mapa-01.webp" alt="" />
-      <img class="hero__cover" src="/assets/img/capa.webp" alt="Capa Resumos e Esquemas PRF, Rota 2027" />
+      <img class="hero__page hero__page--left" src="/assets/img/mapa-04-360.webp" srcset="/assets/img/mapa-04-360.webp 360w, /assets/img/mapa-04-540.webp 540w" sizes="(min-width: 560px) 230px, 44vw" width="540" height="763" alt="" decoding="async" />
+      <img class="hero__page hero__page--right" src="/assets/img/mapa-01-360.webp" srcset="/assets/img/mapa-01-360.webp 360w, /assets/img/mapa-01-540.webp 540w" sizes="(min-width: 560px) 230px, 44vw" width="540" height="763" alt="" decoding="async" />
+      <img class="hero__cover" src="/assets/img/capa-640.webp" srcset="/assets/img/capa-400.webp 400w, /assets/img/capa-640.webp 640w" sizes="(min-width: 560px) 290px, 56vw" width="640" height="905" fetchpriority="high" alt="Capa Resumos e Esquemas PRF, Rota 2027" />
       <span class="hero__sticker">Bizu bom é bizu revisado!</span>
     </div>
   </div>
@@ -137,7 +138,7 @@
 
     <div class="anatomy">
       <figure class="anatomy__figure">
-        <img src="/assets/img/mapa-velocidades.webp" alt="Mapa Velocidades no CTB, do módulo de Trânsito" loading="lazy" />
+        <img src="/assets/img/mapa-velocidades-820.webp" srcset="/assets/img/mapa-velocidades-640.webp 640w, /assets/img/mapa-velocidades-820.webp 820w, /assets/img/mapa-velocidades-1100.webp 1100w" sizes="(min-width: 500px) 460px, calc(100vw - 32px)" width="1100" height="1555" alt="Mapa Velocidades no CTB, do módulo de Trânsito" loading="lazy" decoding="async" />
         <span class="pin" style="top:5%;left:3%">1</span>
         <span class="pin" style="top:16%;left:3%">2</span>
         <span class="pin" style="top:60%;left:80%">3</span>
@@ -167,7 +168,7 @@
   <div class="container">
     <div class="compare" id="compare">
       <div class="compare__after">
-        <img src="/assets/img/mapa-velocidades.webp" alt="Mapa mental: Velocidades no CTB" loading="lazy" />
+        <img src="/assets/img/mapa-velocidades-820.webp" srcset="/assets/img/mapa-velocidades-640.webp 640w, /assets/img/mapa-velocidades-820.webp 820w, /assets/img/mapa-velocidades-1100.webp 1100w" sizes="(min-width: 600px) 560px, calc(100vw - 32px)" width="1100" height="1555" alt="Mapa mental: Velocidades no CTB" loading="lazy" decoding="async" />
         <span class="compare__tag compare__tag--right">Mapa Rota PRF</span>
       </div>
       <div class="compare__before" id="compare-before">
@@ -259,8 +260,8 @@
   <div class="container">
     <div class="package">
       <div class="package__art">
-        <img class="package__cover" src="/assets/img/capa-2.webp" alt="Capa Rota PRF 2027 com policiais rodoviários" loading="lazy" />
-        <img class="package__back" src="/assets/img/capa-3.webp" alt="" loading="lazy" />
+        <img class="package__cover" src="/assets/img/capa-2-400.webp" srcset="/assets/img/capa-2-400.webp 400w, /assets/img/capa-2-600.webp 600w" sizes="270px" width="600" height="848" alt="Capa Rota PRF 2027 com policiais rodoviários" loading="lazy" decoding="async" />
+        <img class="package__back" src="/assets/img/capa-3-400.webp" srcset="/assets/img/capa-3-400.webp 400w, /assets/img/capa-3-600.webp 600w" sizes="270px" width="600" height="848" alt="" loading="lazy" decoding="async" />
       </div>
       <div class="package__copy">
         <span class="kicker">KM 08 · O QUE VOCÊ RECEBE</span>
@@ -287,7 +288,7 @@
 
     <div class="price-card">
       <span class="price-card__pill">⚡ 420 MAPAS · 15 MÓDULOS</span>
-      <img class="price-card__img" src="/assets/img/capa.webp" alt="" loading="lazy" />
+      <img class="price-card__img" src="/assets/img/capa-400.webp" width="400" height="565" alt="" loading="lazy" decoding="async" />
       <ul class="checklist checklist--dark checklist--left">
         <li>Rota PRF 2027: 420 mapas em 15 módulos</li>
         <li>108 mapas de Legislação de Trânsito</li>
@@ -403,6 +404,6 @@
 
 <a href="#oferta" class="sticky-cta" id="sticky-cta">QUERO OS 420 MAPAS →</a>
 
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js?v=2" defer></script>
 </body>
 </html>

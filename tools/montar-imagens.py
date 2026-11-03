@@ -39,12 +39,17 @@ def previas(mod):
     return sorted(glob.glob(f"{OUT}/PRF_{mod}_Previas/*.png"))
 
 
-def salvar(src, nome, largura, q=78):
-    im = Image.open(src).convert("RGB")
-    if im.width > largura:
-        im = im.resize((largura, round(im.height * largura / im.width)), Image.LANCZOS)
-    im.save(os.path.join(DEST, nome), "WEBP", quality=q, method=6)
-    return im
+def salvar(src, nome, larguras, q=70, topo=1.0):
+    """Salva uma versão WebP por largura: nome-<largura>.webp.
+
+    topo < 1 corta a imagem e guarda só a parte de cima (miniaturas que só mostram o início da página).
+    """
+    base = Image.open(src).convert("RGB")
+    if topo < 1:
+        base = base.crop((0, 0, base.width, round(base.height * topo)))
+    for w in larguras:
+        im = base.resize((w, round(base.height * w / base.width)), Image.LANCZOS) if base.width > w else base
+        im.save(os.path.join(DEST, f"{nome}-{w}.webp"), "WEBP", quality=q, method=6)
 
 
 def og_image():
@@ -74,15 +79,23 @@ def og_image():
 
 
 def main():
+    # limpa as imagens antigas (menos o logo e a og-image, que são refeitos abaixo)
     os.makedirs(DEST, exist_ok=True)
+    for f in glob.glob(os.path.join(DEST, "*.webp")):
+        os.remove(f)
+    # galeria: aparece com 250–300 px de largura
     for i, (mod, pos) in enumerate(GALERIA, 1):
-        salvar(previas(mod)[pos], f"mapa-{i:02d}.webp", 760)
-    for i, (mod, _) in enumerate(MODULOS, 1):
-        salvar(previas(mod)[0], f"modulo-{i:02d}.webp", 420, q=72)
-    salvar(previas("Transito_108")[13], "mapa-velocidades.webp", 1100, q=82)
-    salvar(f"{CAPAS}/01-Capa PRF em destaque.png", "capa.webp", 820, q=82)
-    salvar(f"{CAPAS}/Com policiais/03-Rota PRF 2027 policiais post-it amarelo.png", "capa-2.webp", 700)
-    salvar(f"{CAPAS}/02-Capa Rota 2027 em destaque.png", "capa-3.webp", 700)
+        salvar(previas(mod)[pos], f"mapa-{i:02d}", (360, 540), q=62)
+    # módulos: a miniatura só mostra o topo da página; o 01 (destaque) mostra a página inteira
+    salvar(previas(MODULOS[0][0])[0], "modulo-01", (420, 640), q=66)
+    for i, (mod, _) in enumerate(MODULOS[1:], 2):
+        salvar(previas(mod)[0], f"modulo-{i:02d}", (360,), q=62, topo=0.5)
+    # mapa grande do comparador e da anatomia: precisa ficar legível
+    salvar(previas("Transito_108")[13], "mapa-velocidades", (640, 820, 1100), q=72)
+    # capas
+    salvar(f"{CAPAS}/01-Capa PRF em destaque.png", "capa", (400, 640), q=74)
+    salvar(f"{CAPAS}/Com policiais/03-Rota PRF 2027 policiais post-it amarelo.png", "capa-2", (400, 600), q=70)
+    salvar(f"{CAPAS}/02-Capa Rota 2027 em destaque.png", "capa-3", (400, 600), q=70)
     shutil.copy(f"{OUT}/Logo_Rota_PRF_2027_v6.svg", os.path.join(DEST, "logo.svg"))
     og_image()
     total = sum(os.path.getsize(os.path.join(DEST, f)) for f in os.listdir(DEST))

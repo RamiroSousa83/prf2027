@@ -29,7 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (track1) {
     const build = () =>
       Array.from({ length: 18 }, (_, i) =>
-        `<img src="/assets/img/mapa-${String(i + 1).padStart(2, "0")}.webp" alt="Página de exemplo do Rota PRF 2027" loading="lazy" width="760" height="1075" />`
+        { const n = String(i + 1).padStart(2, "0");
+          return `<img src="/assets/img/mapa-${n}-360.webp" srcset="/assets/img/mapa-${n}-360.webp 360w, /assets/img/mapa-${n}-540.webp 540w" sizes="(min-width: 760px) 300px, 250px" width="540" height="763" alt="Página de exemplo do Rota PRF 2027" loading="lazy" decoding="async" />`; }
       ).join("");
     track1.innerHTML = build() + build();
   }
@@ -42,7 +43,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const featured = i === 0;
       return `
         <article class="module${featured ? " module--featured" : ""}">
-          <div class="module__thumb"><img src="/assets/img/modulo-${num}.webp" alt="Primeira página do módulo ${nome}" loading="lazy" /></div>
+          <div class="module__thumb">${featured
+            ? `<img src="/assets/img/modulo-01-420.webp" srcset="/assets/img/modulo-01-420.webp 420w, /assets/img/modulo-01-640.webp 640w" sizes="(min-width: 960px) 420px, 42vw" width="640" height="905" alt="Primeira página do módulo ${nome}" loading="lazy" decoding="async" />`
+            : `<img src="/assets/img/modulo-${num}-360.webp" width="360" height="255" alt="Primeira página do módulo ${nome}" loading="lazy" decoding="async" />`}</div>
           <div class="module__body">
             ${featured ? '<span class="module__badge">O MAIOR MÓDULO</span>' : ""}
             <span class="module__n">MÓDULO ${num}</span>
