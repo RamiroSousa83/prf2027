@@ -35,25 +35,22 @@ document.addEventListener("DOMContentLoaded", () => {
     track1.innerHTML = build() + build();
   }
 
-  /* ---------- Grade de módulos ---------- */
-  const modulesEl = document.getElementById("modules");
-  if (modulesEl) {
-    modulesEl.innerHTML = MODULOS.map(([nome, n], i) => {
-      const num = String(i + 1).padStart(2, "0");
-      const featured = i === 0;
-      return `
-        <article class="module${featured ? " module--featured" : ""}">
-          <div class="module__thumb">${featured
-            ? `<img src="/assets/img/modulo-01-420.webp" srcset="/assets/img/modulo-01-420.webp 420w, /assets/img/modulo-01-640.webp 640w" sizes="(min-width: 960px) 420px, 42vw" width="640" height="905" alt="Primeira página do módulo ${nome}" loading="lazy" decoding="async" />`
-            : `<img src="/assets/img/modulo-${num}-360.webp" width="360" height="255" alt="Primeira página do módulo ${nome}" loading="lazy" decoding="async" />`}</div>
-          <div class="module__body">
-            ${featured ? '<span class="module__badge">O MAIOR MÓDULO</span>' : ""}
-            <span class="module__n">MÓDULO ${num}</span>
-            <h3 class="module__name">${nome}</h3>
-            <span class="module__count"><b>${n} mapas</b></span>
-          </div>
-        </article>`;
-    }).join("");
+  /* ---------- Faixa 2: um selo por matéria ---------- */
+  const track2 = document.getElementById("marquee-2-track");
+  if (track2) {
+    const build = () =>
+      MODULOS.map(([nome, n], i) => {
+        const num = String(i + 1).padStart(2, "0");
+        const img = i === 0 ? "modulo-01-420.webp" : `modulo-${num}-360.webp`;
+        return `
+        <div class="subject">
+          <div class="subject__head"><span>PRF 2027</span><b>ROTA PRF</b></div>
+          <div class="subject__thumb"><img src="/assets/img/${img}" width="360" height="255" alt="Rota PRF 2027: ${nome}" loading="lazy" decoding="async" /></div>
+          <span class="subject__name">${nome}</span>
+          <span class="subject__count">${n} mapas</span>
+        </div>`;
+      }).join("");
+    track2.innerHTML = build() + build();
   }
 
   /* ---------- Controles da galeria ---------- */
