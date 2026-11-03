@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const build = () =>
       MODULOS.map(([nome, n], i) => {
         const num = String(i + 1).padStart(2, "0");
-        const img = i === 0 ? "modulo-01-420.webp" : `modulo-${num}-360.webp`;
+        const img = `modulo-${num}-300.webp`;
         return `
         <div class="marquee-badge">
           <div class="marquee-badge__head">
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <span class="marquee-badge__mid">ROTA PRF · ${n} MAPAS</span>
           </div>
           <div class="marquee-badge__tablet">
-            <img src="/assets/img/${img}" width="360" height="270" alt="Rota PRF 2027: ${nome}" loading="lazy" decoding="async" />
+            <img src="/assets/img/${img}" width="300" height="424" alt="Rota PRF 2027: ${nome}" loading="lazy" decoding="async" />
           </div>
           <span class="marquee-badge__subject">${nome}</span>
         </div>`;

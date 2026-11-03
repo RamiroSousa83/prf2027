@@ -81,15 +81,16 @@ def og_image():
 def main():
     # limpa as imagens antigas (menos o logo e a og-image, que são refeitos abaixo)
     os.makedirs(DEST, exist_ok=True)
-    for f in glob.glob(os.path.join(DEST, "*.webp")):
-        os.remove(f)
+    # só apaga o que este script gera (avatares e selo vieram da PCBA e ficam)
+    for pad in ("mapa-*.webp", "modulo-*.webp", "capa*.webp"):
+        for f in glob.glob(os.path.join(DEST, pad)):
+            os.remove(f)
     # galeria: aparece com 250–300 px de largura
     for i, (mod, pos) in enumerate(GALERIA, 1):
         salvar(previas(mod)[pos], f"mapa-{i:02d}", (360, 540), q=62)
-    # módulos: a miniatura só mostra o topo da página; o 01 (destaque) mostra a página inteira
-    salvar(previas(MODULOS[0][0])[0], "modulo-01", (420, 640), q=66)
-    for i, (mod, _) in enumerate(MODULOS[1:], 2):
-        salvar(previas(mod)[0], f"modulo-{i:02d}", (360,), q=62, topo=0.5)
+    # módulos: página inteira, em pé, para o "tablet" da faixa de matérias
+    for i, (mod, _) in enumerate(MODULOS, 1):
+        salvar(previas(mod)[0], f"modulo-{i:02d}", (300,), q=64)
     # mapa grande do comparador e da anatomia: precisa ficar legível
     salvar(previas("Transito_108")[13], "mapa-velocidades", (640, 820, 1100), q=72)
     # capas

@@ -746,8 +746,6 @@ img { height: auto; }
 .lawtext__label { font-weight: 700; font-size: .85em; letter-spacing: .04em; color: #666; }
 .lawtext__title { font-weight: 700; font-size: 1.3em; }
 
-/* Selo das matérias: miniatura cortada no topo */
-.marquee-badge__tablet img { aspect-ratio: 4 / 3; object-fit: cover; object-position: top; }
 
 /* Montagem do produto (capas + mapas) */
 .stack-art--build { position: relative; height: 300px; }
