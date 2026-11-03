@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const build = () =>
       Array.from({ length: 18 }, (_, i) =>
         { const n = String(i + 1).padStart(2, "0");
-          return `<img src="/assets/img/mapa-${n}-360.webp" srcset="/assets/img/mapa-${n}-360.webp 360w, /assets/img/mapa-${n}-540.webp 540w" sizes="(min-width: 760px) 300px, 250px" width="540" height="763" alt="Página de exemplo do Rota PRF 2027" loading="lazy" decoding="async" />`; }
+          return `<img src="/assets/img/mapa-${n}-360.webp" srcset="/assets/img/mapa-${n}-360.webp 360w, /assets/img/mapa-${n}-540.webp 540w" sizes="184px" width="540" height="763" alt="Página de exemplo do Rota PRF 2027" loading="lazy" decoding="async" />`; }
       ).join("");
     track1.innerHTML = build() + build();
   }
@@ -43,11 +43,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const num = String(i + 1).padStart(2, "0");
         const img = i === 0 ? "modulo-01-420.webp" : `modulo-${num}-360.webp`;
         return `
-        <div class="subject">
-          <div class="subject__head"><span>PRF 2027</span><b>ROTA PRF</b></div>
-          <div class="subject__thumb"><img src="/assets/img/${img}" width="360" height="255" alt="Rota PRF 2027: ${nome}" loading="lazy" decoding="async" /></div>
-          <span class="subject__name">${nome}</span>
-          <span class="subject__count">${n} mapas</span>
+        <div class="marquee-badge">
+          <div class="marquee-badge__head">
+            <span class="marquee-badge__top">PRF 2027</span>
+            <span class="marquee-badge__mid">ROTA PRF · ${n} MAPAS</span>
+          </div>
+          <div class="marquee-badge__tablet">
+            <img src="/assets/img/${img}" width="360" height="270" alt="Rota PRF 2027: ${nome}" loading="lazy" decoding="async" />
+          </div>
+          <span class="marquee-badge__subject">${nome}</span>
         </div>`;
       }).join("");
     track2.innerHTML = build() + build();
